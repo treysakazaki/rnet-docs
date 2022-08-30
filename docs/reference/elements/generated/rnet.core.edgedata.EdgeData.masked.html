@@ -33,6 +33,7 @@
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Tutorials" href="../../../tutorials/index.html" />
@@ -202,6 +203,16 @@ within the specified region.</p>
 <dt><strong>vdata</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></span></dt><dd><p>Vertex data which provides the coordinates of the vertices along
 each edge.</p>
 </dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Possible keyword arguments are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>xmin (float) : Minimum <span class="math notranslate nohighlight">\(x\)</span>-coordinate.</p></li>
+<li><p>ymin (float) : Minimum <span class="math notranslate nohighlight">\(y\)</span>-coordinate.</p></li>
+<li><p>xmax (float) : Maximum <span class="math notranslate nohighlight">\(x\)</span>-coordinate.</p></li>
+<li><p>ymax (float) : Maximum <span class="math notranslate nohighlight">\(y\)</span>-coordinate.</p></li>
+</ul>
+</div></blockquote>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -210,6 +221,12 @@ each edge.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">rn</span><span class="o">.</span><span class="n">GraphData</span><span class="o">.</span><span class="n">from_osm</span><span class="p">(</span><span class="o">&lt;</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">osm</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">masked</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">edata</span><span class="o">.</span><span class="n">masked</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">vdata</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mf">140.1</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">35.4</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">140.2</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">35.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">masked</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

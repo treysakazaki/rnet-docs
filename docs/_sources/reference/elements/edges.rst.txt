@@ -4,3 +4,8 @@ Edges
 .. currentmodule:: rnet.core.edgedata
 
 .. autoclass:: EdgeData
+
+.. autosummary::
+    :toctree: generated/
+
+    ~EdgeData.masked
