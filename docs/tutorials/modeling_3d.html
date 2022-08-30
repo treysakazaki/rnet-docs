@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modeling a Road Network &#8212; rnet 0.0.2 documentation</title>
+    <title>Three-Dimensional Modeling &#8212; rnet 0.0.2 documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -35,8 +35,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Three-Dimensional Modeling" href="modeling_3d.html" />
-    <link rel="prev" title="Tutorials" href="index.html" />
+    <link rel="prev" title="Modeling a Road Network" href="modeling_roads.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="None">
   </head>
@@ -130,13 +129,13 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="modeling_roads.html">
    Modeling a Road Network
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modeling_3d.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Three-Dimensional Modeling
   </a>
  </li>
@@ -193,35 +192,63 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="modeling-a-road-network">
-<h1>Modeling a Road Network<a class="headerlink" href="#modeling-a-road-network" title="Permalink to this headline">#</a></h1>
-<p>In this tutorial, we will create a two-dimensional model of the road network in Ichihara City.</p>
+  <section id="three-dimensional-modeling">
+<h1>Three-Dimensional Modeling<a class="headerlink" href="#three-dimensional-modeling" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, we will create a three-dimensional model of the road network in Ichihara City, Japan.</p>
 <section id="materials">
 <h2>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">#</a></h2>
 <p>This tutorial requires the following materials:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>street map data of Ichihara City (<code class="docutils literal notranslate"><span class="pre">ichihara.osm</span></code>).</p></li>
+<li><p>street map data of Ichihara City (<code class="docutils literal notranslate"><span class="pre">ichihara.osm</span></code>), and</p></li>
+<li><p>elevation data of Ichihara City (<code class="docutils literal notranslate"><span class="pre">n35_e139_1arc_v3.tif</span></code> and <code class="docutils literal notranslate"><span class="pre">n35_e140_1arc_v3.tif</span></code>).</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="procedure">
 <h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">#</a></h2>
 <ol class="arabic">
-<li><p>Create a new QGIS project.</p></li>
-<li><p>Set the project CRS to EPSG:6677 - JGD2011 / Japan Plane Rectangular CS IX. This may done from the <code class="docutils literal notranslate"><span class="pre">CRS</span></code> tab of the <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">►</span> <span class="pre">Properties...</span></code> dialog (see <a class="reference external" href="https://docs.qgis.org/3.22/en/docs/user_manual/working_with_projections/working_with_projections.html#project-coordinate-reference-systems">QGIS documentation</a>), or from the Python console with the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">setCrs</span><span class="p">(</span><span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:6677&quot;</span><span class="p">))</span>
+<li><p>Follow the steps 1 through 4 in the previous tutorial to first construct a two-dimensional road network model.</p></li>
+<li><p>Instantiate <code class="xref py py-class docutils literal notranslate"><span class="pre">ElevationQueryEngine</span></code> using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_tifs()</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">rn</span><span class="o">.</span><span class="n">ElevationQueryEngine</span><span class="o">.</span><span class="n">from_tifs</span><span class="p">(</span><span class="s2">&quot;n35_e139_1arc_v3.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;n35_e140_1arc_v3.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p>Use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">GraphData.from_osm()</span></code> method to construct the road network model from the street map data of Ichihara City:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">rnet</span> <span class="k">as</span> <span class="nn">rn</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">rn</span><span class="o">.</span><span class="n">GraphData</span><span class="o">.</span><span class="n">from_osm</span><span class="p">(</span><span class="s2">&quot;ichihara.osm&quot;</span><span class="p">)</span>
+<li><p>Convert the two-dimensional model to a three-dimensional model using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">expand()</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-<li><p>Transform coordinates from EPSG:4326 to EPSG:6677 using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">transform()</span></code> method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="mi">6677</span><span class="p">)</span>
+<p>Confirm that the vertices and nodes in the model now have three-dimensional coordinates:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">vdata</span><span class="o">.</span><span class="n">df</span>
+<span class="go">                 x          y          z</span>
+<span class="go">id</span>
+<span class="go">0       139.933095  35.361260  27.660686</span>
+<span class="go">1       139.933177  35.361303  27.700376</span>
+<span class="go">2       139.933514  35.361481  28.943817</span>
+<span class="go">3       139.934409  35.361953  33.050092</span>
+<span class="go">4       139.935344  35.362447  36.824534</span>
+<span class="go">                        ...</span>
+<span class="go">177148  140.313908  35.360385  12.376692</span>
+<span class="go">177149  140.314289  35.360574  12.497454</span>
+<span class="go">177150  140.314741  35.360745  12.481726</span>
+<span class="go">177151  140.314892  35.360778  12.502719</span>
+<span class="go">177152  140.315844  35.361007  12.407990</span>
+<span class="go">[177153 rows x 3 columns]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">ndata</span><span class="o">.</span><span class="n">df</span>
+<span class="go">                 x          y           z</span>
+<span class="go">id</span>
+<span class="go">0       139.933095  35.361260   27.660686</span>
+<span class="go">12      139.937906  35.259384  192.452257</span>
+<span class="go">16      139.938034  35.438496    2.568035</span>
+<span class="go">40      139.939477  35.386629    7.228554</span>
+<span class="go">59      139.940661  35.248059  278.511355</span>
+<span class="go">                        ...</span>
+<span class="go">176940  140.275111  35.374252   19.552842</span>
+<span class="go">177020  140.284766  35.525735   85.109855</span>
+<span class="go">177034  140.286765  35.436393   11.129895</span>
+<span class="go">177142  140.307335  35.360429   14.269132</span>
+<span class="go">177152  140.315844  35.361007   12.407990</span>
+<span class="go">[37953 rows x 3 columns]</span>
 </pre></div>
 </div>
 </li>
@@ -229,13 +256,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The model is visualized using two point layers, <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">nodes</span></code>, and two linestring layers, <code class="docutils literal notranslate"><span class="pre">links</span></code> and <code class="docutils literal notranslate"><span class="pre">edges</span></code>. These layers are all temporary scratch layers, so they will be discarded when QGIS is closed.</p>
 </li>
 <li><p>To save the model for future reference, call the <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_gpkg()</span></code> method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">to_gpkg</span><span class="p">(</span><span class="s2">&quot;ichihara2d.gpkg&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">to_gpkg</span><span class="p">(</span><span class="s2">&quot;ichihara3d.gpkg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The model will be saved in a GeoPackage file containing four sublayers. The temporary scratch layers generated in the previous step will automatically be replaced with the newly saved GeoPackage layers.</p>
 </li>
 </ol>
 </section>
@@ -249,19 +274,12 @@
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="modeling_roads.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Tutorials</p>
+          <p class="prev-next-title">Modeling a Road Network</p>
       </div>
-  </a>
-  <a class='right-next' id="next-link" href="modeling_3d.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Three-Dimensional Modeling</p>
-  </div>
-  <i class="fas fa-angle-right"></i>
   </a>
 </div>
               </footer>
