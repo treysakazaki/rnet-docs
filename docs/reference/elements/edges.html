@@ -35,7 +35,7 @@
     <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="rnet.core.edgedata.EdgeData.masked" href="generated/rnet.core.edgedata.EdgeData.masked.html" />
+    <link rel="next" title="Tutorials" href="../../tutorials/index.html" />
     <link rel="prev" title="Reference" href="../index.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="None">
@@ -134,22 +134,10 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Edges
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="generated/rnet.core.edgedata.EdgeData.masked.html">
-     rnet.core.edgedata.EdgeData.masked
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -197,19 +185,57 @@
 <dd><p>Class for representing undirected edge data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Frame containing edge data with multi-index [‘i’, ‘j’] and column
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>Frame containing edge data with multi-index [‘i’, ‘j’] and column
 ‘vsequence’.</p>
 </dd>
 </dl>
-<p><strong>Methods</strong></p>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>layer</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.core.edgedata.EdgeData.masked.html#rnet.core.edgedata.EdgeData.masked" title="rnet.core.edgedata.EdgeData.masked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked</span></code></a>(vdata, **kwargs)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">coords</span></code>(vdata)</p></td>
+<td><p>Returns frame with multi-index ['i', 'j'] and column 'coords'.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code>(vdata, ldata, **kwargs)</p></td>
+<td><p>Yields edges in the data set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_gpkg</span></code>(gpkg[, layername])</p></td>
+<td><p>Instantiates <a class="reference internal" href="#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from a GeoPackage layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_ml</span></code>([layername])</p></td>
+<td><p>Instantiates <a class="reference internal" href="#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from map layer with specified name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_vl</span></code>(vl)</p></td>
+<td><p>Instantiates <a class="reference internal" href="#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from a vector layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate</span></code>(vdata, ldata[, report])</p></td>
+<td><p>Yields link features with line geometry and attributes 'fid', 'i', 'j', and 'tag'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengths</span></code>(vdata)</p></td>
+<td><p>Returns frame with multi-index ['i', 'j'] and column 'length'.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.core.edgedata.EdgeData.masked.html#rnet.core.edgedata.EdgeData.masked" title="rnet.core.edgedata.EdgeData.masked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked</span></code></a>(vdata, **kwargs)</p></td>
 <td><p>Returns dataset containing only the edges whose vertices are all located within the specified region.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">render</span></code>(vdata, ldata[, groupname, index])</p></td>
+<td><p>Renders a newly created vector layer that is populated with edge features.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tags</span></code>(ldata)</p></td>
+<td><p>Returns frame with multi-index ['i', 'j'] and column 'tag'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_gpkg</span></code>(vdata, ldata, gpkg[, layername])</p></td>
+<td><p>Saves edge features to a GPKG layer.</p></td>
 </tr>
 </tbody>
 </table>
@@ -232,10 +258,10 @@
           <p class="prev-next-title">Reference</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="generated/rnet.core.edgedata.EdgeData.masked.html" title="next page">
+  <a class='right-next' id="next-link" href="../../tutorials/index.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">rnet.core.edgedata.EdgeData.masked</p>
+      <p class="prev-next-title">Tutorials</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
