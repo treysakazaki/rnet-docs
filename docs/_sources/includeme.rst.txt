@@ -1,4 +1,0 @@
-Inlcude Me
-==========
-
-.. include:: ../../README.rst
