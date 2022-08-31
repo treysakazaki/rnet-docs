@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>rnet.core.edgedata.EdgeData.masked &#8212; rnet 0.0.2 documentation</title>
+    <title>rnet.EdgeData.from_gpkg &#8212; rnet 0.0.2 documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -33,11 +33,10 @@
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Tutorials" href="../../../tutorials/index.html" />
-    <link rel="prev" title="Edges" href="../edges.html" />
+    <link rel="next" title="rnet.EdgeData.to_gpkg" href="rnet.EdgeData.to_gpkg.html" />
+    <link rel="prev" title="rnet.EdgeData.render" href="rnet.EdgeData.render.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="None">
   </head>
@@ -145,9 +144,54 @@
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.html">
+     rnet.EdgeData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.coords.html">
+     rnet.EdgeData.coords
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.lengths.html">
+     rnet.EdgeData.lengths
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.masked.html">
+     rnet.EdgeData.masked
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.tags.html">
+     rnet.EdgeData.tags
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.edges.html">
+     rnet.EdgeData.edges
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.generate.html">
+     rnet.EdgeData.generate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.render.html">
+     rnet.EdgeData.render
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     rnet.core.edgedata.EdgeData.masked
+     rnet.EdgeData.from_gpkg
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnet.EdgeData.to_gpkg.html">
+     rnet.EdgeData.to_gpkg
     </a>
    </li>
   </ul>
@@ -190,43 +234,30 @@
               
               <article class="bd-article" role="main">
                 
-  <section id="rnet-core-edgedata-edgedata-masked">
-<h1>rnet.core.edgedata.EdgeData.masked<a class="headerlink" href="#rnet-core-edgedata-edgedata-masked" title="Permalink to this headline">#</a></h1>
+  <section id="rnet-edgedata-from-gpkg">
+<h1>rnet.EdgeData.from_gpkg<a class="headerlink" href="#rnet-edgedata-from-gpkg" title="Permalink to this headline">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="rnet.core.edgedata.EdgeData.masked">
-<span class="sig-prename descclassname"><span class="pre">EdgeData.</span></span><span class="sig-name descname"><span class="pre">masked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vdata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">rnet.core.vertexdata.VertexData</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../edges.html#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><span class="pre">rnet.core.edgedata.EdgeData</span></a></span></span><a class="headerlink" href="#rnet.core.edgedata.EdgeData.masked" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns dataset containing only the edges whose vertices are all located
-within the specified region.</p>
-<dl class="field-list">
+<dt class="sig sig-object py" id="rnet.EdgeData.from_gpkg">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">EdgeData.</span></span><span class="sig-name descname"><span class="pre">from_gpkg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gpkg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layername</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edges'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rnet.EdgeData.from_gpkg" title="Permalink to this definition">#</a></dt>
+<dd><p>Instantiates <a class="reference internal" href="rnet.EdgeData.html#rnet.EdgeData" title="rnet.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from a GeoPackage layer.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>vdata</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></span></dt><dd><p>Vertex data which provides the coordinates of the vertices along
-each edge.</p>
-</dd>
-<dt><strong>**kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Possible keyword arguments are:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>xmin (float) : Minimum <span class="math notranslate nohighlight">\(x\)</span>-coordinate.</p></li>
-<li><p>ymin (float) : Minimum <span class="math notranslate nohighlight">\(y\)</span>-coordinate.</p></li>
-<li><p>xmax (float) : Maximum <span class="math notranslate nohighlight">\(x\)</span>-coordinate.</p></li>
-<li><p>ymax (float) : Maximum <span class="math notranslate nohighlight">\(y\)</span>-coordinate.</p></li>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gpkg</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">GpkgData</span></code>) – Path or <code class="xref py py-class docutils literal notranslate"><span class="pre">GpkgData</span></code> instance specifying the GeoPackage
+to read.</p></li>
+<li><p><strong>layername</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – Name of the layer to read. The default is ‘edges’.</p></li>
 </ul>
-</div></blockquote>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="rnet.EdgeData.html#rnet.EdgeData" title="rnet.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TypeError</strong> – If <cite>gpkg</cite> is unexpected type.</p></li>
+<li><p><strong>LayerNotFoundError</strong> – If layer with the specified name does not exist.</p></li>
+</ul>
 </dd>
 </dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="../edges.html#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">rn</span><span class="o">.</span><span class="n">GraphData</span><span class="o">.</span><span class="n">from_osm</span><span class="p">(</span><span class="o">&lt;</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">osm</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">masked</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">edata</span><span class="o">.</span><span class="n">masked</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">vdata</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mf">140.1</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">35.4</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">140.2</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">35.5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">masked</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </section>
@@ -239,17 +270,17 @@ each edge.</p>
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="../edges.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="rnet.EdgeData.render.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Edges</p>
+          <p class="prev-next-title">rnet.EdgeData.render</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="../../../tutorials/index.html" title="next page">
+  <a class='right-next' id="next-link" href="rnet.EdgeData.to_gpkg.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Tutorials</p>
+      <p class="prev-next-title">rnet.EdgeData.to_gpkg</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>

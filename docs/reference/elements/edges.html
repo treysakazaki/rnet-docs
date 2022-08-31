@@ -35,7 +35,7 @@
     <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="rnet.core.edgedata.EdgeData.masked" href="generated/rnet.core.edgedata.EdgeData.masked.html" />
+    <link rel="next" title="rnet.EdgeData" href="generated/rnet.EdgeData.html" />
     <link rel="prev" title="Reference" href="../index.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="None">
@@ -145,8 +145,53 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="generated/rnet.core.edgedata.EdgeData.masked.html">
-     rnet.core.edgedata.EdgeData.masked
+    <a class="reference internal" href="generated/rnet.EdgeData.html">
+     rnet.EdgeData
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.coords.html">
+     rnet.EdgeData.coords
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.lengths.html">
+     rnet.EdgeData.lengths
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.tags.html">
+     rnet.EdgeData.tags
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.edges.html">
+     rnet.EdgeData.edges
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.masked.html">
+     rnet.EdgeData.masked
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.generate.html">
+     rnet.EdgeData.generate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.render.html">
+     rnet.EdgeData.render
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.from_gpkg.html">
+     rnet.EdgeData.from_gpkg
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/rnet.EdgeData.to_gpkg.html">
+     rnet.EdgeData.to_gpkg
     </a>
    </li>
   </ul>
@@ -169,9 +214,44 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constructor">
+   Constructor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#descriptions">
+   Descriptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iteration">
+   Iteration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manipulation">
+   Manipulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization">
+   Visualization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#io">
+   IO
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -191,79 +271,102 @@
                 
   <section id="edges">
 <h1>Edges<a class="headerlink" href="#edges" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="rnet.core.edgedata.EdgeData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rnet.core.edgedata.</span></span><span class="sig-name descname"><span class="pre">EdgeData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">rnet.core.layer.Layer</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rnet.core.edgedata.EdgeData" title="Permalink to this definition">#</a></dt>
-<dd><p>Class for representing undirected edge data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>Frame containing edge data with multi-index [‘i’, ‘j’] and column
-‘vsequence’.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>layer</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">coords</span></code>(vdata)</p></td>
-<td><p>Returns frame with multi-index ['i', 'j'] and column 'coords'.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.html#rnet.EdgeData" title="rnet.EdgeData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EdgeData</span></code></a>(df[, layer])</p></td>
+<td><p>Class for representing undirected edge data.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code>(vdata, ldata, **kwargs)</p></td>
+</tbody>
+</table>
+</section>
+<section id="descriptions">
+<h2>Descriptions<a class="headerlink" href="#descriptions" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.coords.html#rnet.EdgeData.coords" title="rnet.EdgeData.coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coords</span></code></a>(vdata)</p></td>
+<td><p>Returns frame containing edge coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.EdgeData.lengths.html#rnet.EdgeData.lengths" title="rnet.EdgeData.lengths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengths</span></code></a>(vdata)</p></td>
+<td><p>Returns frame containing edge lengths.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.tags.html#rnet.EdgeData.tags" title="rnet.EdgeData.tags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tags</span></code></a>(ldata)</p></td>
+<td><p>Returns frame containing edge tags.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="iteration">
+<h2>Iteration<a class="headerlink" href="#iteration" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.edges.html#rnet.EdgeData.edges" title="rnet.EdgeData.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code></a>(vdata, ldata)</p></td>
 <td><p>Yields edges in the data set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_gpkg</span></code>(gpkg[, layername])</p></td>
-<td><p>Instantiates <a class="reference internal" href="#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from a GeoPackage layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_ml</span></code>([layername])</p></td>
-<td><p>Instantiates <a class="reference internal" href="#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from map layer with specified name.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_vl</span></code>(vl)</p></td>
-<td><p>Instantiates <a class="reference internal" href="#rnet.core.edgedata.EdgeData" title="rnet.core.edgedata.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from a vector layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate</span></code>(vdata, ldata[, report])</p></td>
-<td><p>Yields link features with line geometry and attributes 'fid', 'i', 'j', and 'tag'.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">lengths</span></code>(vdata)</p></td>
-<td><p>Returns frame with multi-index ['i', 'j'] and column 'length'.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.core.edgedata.EdgeData.masked.html#rnet.core.edgedata.EdgeData.masked" title="rnet.core.edgedata.EdgeData.masked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked</span></code></a>(vdata, **kwargs)</p></td>
+</tbody>
+</table>
+</section>
+<section id="manipulation">
+<h2>Manipulation<a class="headerlink" href="#manipulation" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.masked.html#rnet.EdgeData.masked" title="rnet.EdgeData.masked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked</span></code></a>(vdata, *[, xmin, ymin, xmax, ymax])</p></td>
 <td><p>Returns dataset containing only the edges whose vertices are all located within the specified region.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">render</span></code>(vdata, ldata[, groupname, index])</p></td>
-<td><p>Renders a newly created vector layer that is populated with edge features.</p></td>
+</tbody>
+</table>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.generate.html#rnet.EdgeData.generate" title="rnet.EdgeData.generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate</span></code></a>(vdata, ldata[, report])</p></td>
+<td><p>Yields edge features.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tags</span></code>(ldata)</p></td>
-<td><p>Returns frame with multi-index ['i', 'j'] and column 'tag'.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.EdgeData.render.html#rnet.EdgeData.render" title="rnet.EdgeData.render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render</span></code></a>(vdata, ldata[, groupname, index])</p></td>
+<td><p>Renders a vector layer, populated with edge features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_gpkg</span></code>(vdata, ldata, gpkg[, layername])</p></td>
+</tbody>
+</table>
+</section>
+<section id="io">
+<h2>IO<a class="headerlink" href="#io" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.EdgeData.from_gpkg.html#rnet.EdgeData.from_gpkg" title="rnet.EdgeData.from_gpkg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_gpkg</span></code></a>(gpkg[, layername])</p></td>
+<td><p>Instantiates <a class="reference internal" href="generated/rnet.EdgeData.html#rnet.EdgeData" title="rnet.EdgeData"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeData</span></code></a> from a GeoPackage layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.EdgeData.to_gpkg.html#rnet.EdgeData.to_gpkg" title="rnet.EdgeData.to_gpkg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_gpkg</span></code></a>(vdata, ldata, gpkg[, layername])</p></td>
 <td><p>Saves edge features to a GPKG layer.</p></td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.core.edgedata.EdgeData.masked.html#rnet.core.edgedata.EdgeData.masked" title="rnet.core.edgedata.EdgeData.masked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked</span></code></a>(vdata, **kwargs)</p></td>
-<td><p>Returns dataset containing only the edges whose vertices are all located within the specified region.</p></td>
-</tr>
-</tbody>
-</table>
+</section>
 </section>
 
 
@@ -281,10 +384,10 @@
           <p class="prev-next-title">Reference</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="generated/rnet.core.edgedata.EdgeData.masked.html" title="next page">
+  <a class='right-next' id="next-link" href="generated/rnet.EdgeData.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">rnet.core.edgedata.EdgeData.masked</p>
+      <p class="prev-next-title">rnet.EdgeData</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
