@@ -227,13 +227,13 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="rnet.VertexData.from_layer.html">
-       rnet.VertexData.from_layer
+      <a class="reference internal" href="rnet.VertexData.from_ml.html">
+       rnet.VertexData.from_ml
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="rnet.VertexData.from_ml.html">
-       rnet.VertexData.from_ml
+      <a class="reference internal" href="rnet.VertexData.crs.html">
+       rnet.VertexData.crs
       </a>
      </li>
      <li class="toctree-l3">
@@ -288,6 +288,11 @@
      </li>
     </ul>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../places.html">
+     Places
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -335,19 +340,15 @@
 <span class="sig-prename descclassname"><span class="pre">VertexData.</span></span><span class="sig-name descname"><span class="pre">transformed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rnet.VertexData.transformed" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns a new <a class="reference internal" href="rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></a> instance with vertex coordinates
 transformed.</p>
-<dl class="simple">
-<dt>dst<span class="classifier">int</span></dt><dd><p>EPSG code of destination CRS.</p>
-</dd>
-</dl>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></a></p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>EPSGError</strong> – If the EPSG code of the destination CRS is invalid.</p>
-</dd>
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>dst</strong> (<em>int</em>) – </p>
+<dd class="field-odd"><p><strong>dst</strong> (<em>int</em>) – EPSG code of destination CRS.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>EPSGError</strong> – If the EPSG code of the destination CRS is invalid.</p>
 </dd>
 </dl>
 <div class="admonition seealso">

@@ -228,13 +228,13 @@
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="generated/rnet.VertexData.from_layer.html">
-       rnet.VertexData.from_layer
+      <a class="reference internal" href="generated/rnet.VertexData.from_ml.html">
+       rnet.VertexData.from_ml
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="generated/rnet.VertexData.from_ml.html">
-       rnet.VertexData.from_ml
+      <a class="reference internal" href="generated/rnet.VertexData.crs.html">
+       rnet.VertexData.crs
       </a>
      </li>
      <li class="toctree-l3">
@@ -288,6 +288,11 @@
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="places.html">
+     Places
+    </a>
    </li>
   </ul>
  </li>
@@ -369,16 +374,13 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VertexData</span></code></a>(df, crs[, layer])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VertexData</span></code></a>(df[, layer])</p></td>
 <td><p>Class for representing vertex data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.VertexData.from_gpkg.html#rnet.VertexData.from_gpkg" title="rnet.VertexData.from_gpkg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_gpkg</span></code></a>(gpkg[, layername])</p></td>
 <td><p>Instantiates <a class="reference internal" href="generated/rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></a> from a GeoPackage layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.VertexData.from_layer.html#rnet.VertexData.from_layer" title="rnet.VertexData.from_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_layer</span></code></a>(layer)</p></td>
-<td><p>Instantiates <a class="reference internal" href="generated/rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></a> from a layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.VertexData.from_ml.html#rnet.VertexData.from_ml" title="rnet.VertexData.from_ml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_ml</span></code></a>([layername])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.VertexData.from_ml.html#rnet.VertexData.from_ml" title="rnet.VertexData.from_ml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_ml</span></code></a>([layername])</p></td>
 <td><p>Instantiates <a class="reference internal" href="generated/rnet.VertexData.html#rnet.VertexData" title="rnet.VertexData"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexData</span></code></a> from map layer with specified name.</p></td>
 </tr>
 </tbody>
@@ -392,7 +394,10 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.VertexData.elevations.html#rnet.VertexData.elevations" title="rnet.VertexData.elevations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevations</span></code></a>(engine[, include_xy])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/rnet.VertexData.crs.html#rnet.VertexData.crs" title="rnet.VertexData.crs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crs</span></code></a></p></td>
+<td><p>CRS in which vertex coordinates are represented.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/rnet.VertexData.elevations.html#rnet.VertexData.elevations" title="rnet.VertexData.elevations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevations</span></code></a>(engine[, include_xy])</p></td>
 <td><p>Returns frame containing vertex elevations.</p></td>
 </tr>
 </tbody>
