@@ -33,6 +33,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Tutorials" href="../../tutorials/index.html" />
@@ -206,6 +207,11 @@
      </li>
     </ul>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nodes.html">
+     Nodes
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="vertices.html">
      Vertices
@@ -335,6 +341,7 @@
                 
   <section id="places">
 <h1>Places<a class="headerlink" href="#places" title="Permalink to this headline">#</a></h1>
+<p>Modeling places in a road network requires some way of encoding their locations in the sets of nodes and edges. To this end, <code class="docutils literal notranslate"><span class="pre">RNet</span></code> employs <em>border nodes</em>, which are points of intersection between the circle centered at each place with radius <span class="math notranslate nohighlight">\(r\)</span>, and the links in the road network model.</p>
 </section>
 
 
